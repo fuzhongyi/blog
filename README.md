@@ -1,0 +1,2 @@
+# blog
+FuZi's Notes

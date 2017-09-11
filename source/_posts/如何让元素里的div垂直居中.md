@@ -13,7 +13,7 @@ categories : css
 {% note info %}
 绝对定位与负边距实现。利用绝对定位，将元素的top和left属性都设为50%，再利用margin边距，将元素回拉它本身高宽的一半，实现垂直居中。
 {% endnote %}
-``` style
+``` css
 #container {
     position:relative;
 }

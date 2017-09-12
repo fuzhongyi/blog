@@ -29,7 +29,7 @@ console.log(person.name);   //output: hanmeimei
 在解开疑惑前，我们先了解下什么是按值传递(call by value)，什么是按引用传递(call by reference)。
 在计算机科学里，这个部分叫求值策略(Evaluation Strategy)。它决定变量之间、函数调用时实参和形参之间值是如何传递的。
 
-### 传递类型
+### 传递方式
 + 值传递(call by value)
 常用的求值策略，函数的形参是被调用时所传实参的副本。修改形参的值并不会影响实参。
 
@@ -118,5 +118,5 @@ console.log(person.name);   //output: lilei
 
 这样一来 obj 和 person 就完全断了， obj 的改变并不会影响 person。 
 
-**传递对象的引用的副本**，这样的传递方式又被称之为共享传递(call by sharing)。
+**传递对象引用的副本**，这样的传递方式又被称之为共享传递(call by sharing)。
 拷贝副本，也是一种值的拷贝，所以在JS中只有值传递。😉

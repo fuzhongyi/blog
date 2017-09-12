@@ -1,9 +1,7 @@
 ---
 title: 如何让元素里的div垂直居中
 date: 2017-09-08 17:35:58
-tags:
-    - html
-    - css
+tags: 居中
 categories : css
 ---
 
@@ -33,7 +31,7 @@ categories : css
 ### 方法一
 使用绝对定位与margin。
 {% endnote %}
-``` css
+```css
 #container {
     position:relative;
 }
@@ -51,7 +49,7 @@ categories : css
 ### 方法二
 当要被居中的元素是内联元素的时候，将父级容器设置为display:table-cell，配合text-align:center和vertical-align:middle即可以实现水平垂直居中。
 {% endnote %}
-``` css
+```css
 #container {
     display:table-cell;
     text-align:center;
@@ -62,7 +60,7 @@ categories : css
 ### 方法三
 使用css3的transform。
 {% endnote %}
-``` css
+```css
 #container {
     position:relative;
 }
@@ -78,7 +76,7 @@ categories : css
 ### 方法四
 使用flex布局。
 {% endnote %}
-``` css
+```css
 #container {
     display:flex;
     justify-content:center;

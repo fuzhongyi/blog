@@ -64,12 +64,14 @@ console.log(name);      //output: lilei
 |---|---|
 | name   |lilei|
 | n      |lilei|
+
 所以，n 的改变对 name 没有影响。
 
 |变量|值| 
 |---|---| 
 | name   |lilei |
 | n      |hanmeimei|
+
 我们把它称作值传递。
 可以这样理解，当传递 name 到函数 setName 中，相当于拷贝了一份 name ，假设拷贝的这份叫 _name ，函数中修改的都是 _name 的值，而不会影响原来的 name 值。
 
@@ -100,6 +102,7 @@ console.log(person.name);   //output: lilei
 |变量|值|地址|对象|
 |---|---|---|---|
 |person|<#001>|#001|{ name : 'lilei' }|
+
 做为参数进入函数 setName 后，就有了地址副本，这个地址副本和 person 的地址指向是相同的。
 
 |变量|值|地址|对象|

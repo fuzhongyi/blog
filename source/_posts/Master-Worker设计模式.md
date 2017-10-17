@@ -4,7 +4,8 @@ date: 2017-09-30 15:02:36
 tags: 
      - 多线程
      - 设计模式   
-categories: java
+     - java
+categories: 技术水波文
 ---
 
 {% fi /Master-Worker设计模式/header-img.jpg %}

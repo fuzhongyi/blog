@@ -1,8 +1,10 @@
 ---
 title: 如何让元素里的div垂直居中
 date: 2017-09-08 17:35:58
-tags: 居中
-categories : css
+tags: 
+    - css
+    - 居中
+categories : 技术水波文
 ---
 
 {% fi /如何让元素里的div垂直居中/header-img.jpg %}

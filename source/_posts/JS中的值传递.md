@@ -1,8 +1,8 @@
 ---
 title: JS中的值传递
 date: 2017-09-12 10:12:17
-tags: 值传递
-categories: javascript
+tags: javascript
+categories: 技术水波文
 ---
 
 {% fi /JS中的值传递/header-img.jpg %}

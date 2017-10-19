@@ -66,11 +66,11 @@ solr create -c my_core
 
 新建名为 my_core 的 core
 
-![my_core](/全文检索引擎Solr搭建/3-1.png)
+![create](/全文检索引擎Solr搭建/3-1.png)
 
 创建成功后，在管理页面选择 Core Admin 可以看到刚创建的 core
       
-![my_core](/全文检索引擎Solr搭建/3-2.png)
+![Core Admin](/全文检索引擎Solr搭建/3-2.png)
 
 在 SOLRHOME （目录说明中有提到）下会生成 my_core 目录
 
@@ -159,7 +159,7 @@ solr restart -p 8983
 
 重启服务
 
-![managed-schema](/全文检索引擎Solr搭建/4-4.png)
+![restart](/全文检索引擎Solr搭建/4-4.png)
 
 进入管理界面，选择 my_core --> Dataimport --> Execute 导入数据，可以点击 Refresh Status 查看导入状态
 
@@ -169,7 +169,7 @@ solr restart -p 8983
 
 选择 Query
 
-![Dataimport](/全文检索引擎Solr搭建/5-1.png)
+![Query](/全文检索引擎Solr搭建/5-1.png)
 
 点击 Execute Query 查询数据
 
@@ -249,10 +249,10 @@ smartcn 是 Solr 同步发行的一个中文分词包，将 solr-7.0.1/contrib/a
 
 分词器配置完成后，选择 Analysis，输入要分词的内容（Field Value），选择字段类型（Analyse Fieldname / FieldType [与配置信息 fieldType name 同步]），点击 Analyse Values 获取分词结果。
 
-![Execute Query](/全文检索引擎Solr搭建/6-1.png)
+![Analyse Values](/全文检索引擎Solr搭建/6-1.png)
 
 编辑 %SOLRHOME%/my_core/conf/managed-schema，修改索引字段类型为新添加分词类型其中任意一种即可，这里我们将 text_general 修改为 text_ik，重启服务后重新导入数据
 
-![Execute Query](/全文检索引擎Solr搭建/6-2.png)
+![Modify Type](/全文检索引擎Solr搭建/6-2.png)
 
 这样我们在对该字段行进搜索时就能达到分词搜索的效果了😛

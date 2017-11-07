@@ -1,30 +1,28 @@
 ---
 title: '使用UEditor(JSP 1.4.3版本)遇到的问题'
 date: 2017-10-12 17:02:01
-tags: 
-    - 富文本编辑器
-    - UEditor
+tags: [富文本编辑器,UEditor]
 categories : 技术水波文
 ---
 
-{% fi /使用UEditor遇到的问题/header-img.jpg %}
+![](/problems-of-using-ueditor/header-img.jpg)
 
-## 一、ueditor简介:
+## ueditor简介:
 
 >UEditor是由百度web前端研发部开发所见即所得富文本web编辑器，具有轻量，可定制，注重用户体验等特点，开源基于MIT协议，允许自由使用和修改代码...
 
-## 二、遇到问题及解决方案
+## 遇到问题及解决方案
 
-### 1.setContent报错
+### setContent报错
 
-#### 1）描述
+#### 描述
 当使用setContent给初始化容器设置内容时出现如下错误：
-![](/使用UEditor遇到的问题/2-1.png)
-<!-- more-->
-#### 2）原因
+![](/problems-of-using-ueditor/2-1.png)
+
+#### 原因
 异步，初始化容器并未创建完成，需等待编辑器创建完成后才能使用。
 
-#### 3）解决
+#### 解决
 
 ##### 方法一
 使用setTimeout延迟一段时间后调用（不建议：由于setTimeout设置的时间与实际渲染需要的时间不一致）；
@@ -36,20 +34,20 @@ ue.addListener('ready', function () {
    ue.setContent(content);
 });
 ```
-### 2.上传文件——“未找到上传数据”
+### 上传文件——“未找到上传数据”
 
-#### 1）描述
+#### 描述
 无论上传什么文件均出现如下错误：
-![](/使用UEditor遇到的问题/2-2.png)
+![](/problems-of-using-ueditor/2-2.png)
 
-#### 2）原因
+#### 原因
 
 1. struts2：
 struts2 框架默认使用 apache 的 commons-fileUpload 组件和内建的 FileUploadInterceptor 拦截器实现上传，会将 request 文件域封装到 action 中一个 File 类型的属性中，并删除 request 中的文件域，因此会上传文件失败。
 2. springMVC：
 UEditor 默认使用 commons 组件，而 springMVC 对 commons 组件进行了封装，使得上传后获取不到文件。
 
-#### 3）解决
+#### 解决
 
 1. struts2：
 自定义一个 struts 过滤器，指定不对 ueditor/jsp/ 目录下的 jsp 页面进行过滤。
@@ -74,7 +72,7 @@ public class MyStrutsFilter extends StrutsPrepareAndExecuteFilter{
 2. springMVC：
 修改源码 upload 包下的 BinaryUploader.java 文件。
 下载并使用源码：
-![](/使用UEditor遇到的问题/2-3.png)
+![](/problems-of-using-ueditor/2-3.png)
 重写 BinaryUploader.java ：
 ```java
 public class BinaryUploader {
@@ -128,15 +126,15 @@ public class BinaryUploader {
 }
 ```
 
-### 3.上传文件消失
+### 上传文件消失
     
-#### 1）描述
+#### 描述
 使用 tomcat ，已上传文件在重新部署项目后丢失。
 
-#### 2）原因
+#### 原因
 UEditor 上传配置文件 config.json 默认将上传文件上传到项目中，重新部署会清空项目文件。
 
-#### 3）解决
+#### 解决
 
 ##### 方法一：修改上传路径到webapps目录下
 第一步：

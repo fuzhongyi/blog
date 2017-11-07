@@ -5,9 +5,9 @@ tags: solr
 categories : 技术水波文
 ---
 
-{% fi /全文检索引擎Solr搭建/header-img.png %}
+![](/search-engine-solr-build/header-img.png)
 
-{% cq %} Solr是一个高性能，采用Java5开发，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。 {% endcq %}
+>Solr是一个高性能，采用Java5开发，基于Lucene的全文搜索服务器。同时对其进行了扩展，提供了比Lucene更为丰富的查询语言，同时实现了可配置、可扩展并对查询性能进行了优化，并且提供了一个完善的功能管理界面，是一款非常优秀的全文搜索引擎。
 
 ## 准备
 
@@ -35,12 +35,12 @@ categories : 技术水波文
     └─solr-webapp   // solr 后台管理页面 webapp
      
 ```
-<!-- more -->
+
 ## 启动
 
 进入 /bin 目录， 按住 shift + 鼠标右键打开命令窗口
 
-![打开命令窗口](/全文检索引擎Solr搭建/2-1.png)
+![打开命令窗口](/search-engine-solr-build/2-1.png)
 
 输入
 
@@ -50,11 +50,11 @@ solr start
 
 启动 Solr 服务
 
-![启动 Solr 服务](/全文检索引擎Solr搭建/2-2.png )
+![启动 Solr 服务](/search-engine-solr-build/2-2.png )
 
 在浏览器中输入 [localhost:8983](http://localhost:8983) 访问 Solr 管理后台
 
-![管理后台](/全文检索引擎Solr搭建/2-3.png)
+![管理后台](/search-engine-solr-build/2-3.png)
 
 ## 新建索引库core
 
@@ -66,15 +66,15 @@ solr create -c my_core
 
 新建名为 my_core 的 core
 
-![create](/全文检索引擎Solr搭建/3-1.png)
+![create](/search-engine-solr-build/3-1.png)
 
 创建成功后，在管理页面选择 Core Admin 可以看到刚创建的 core
       
-![Core Admin](/全文检索引擎Solr搭建/3-2.png)
+![Core Admin](/search-engine-solr-build/3-2.png)
 
 在 SOLRHOME （目录说明中有提到）下会生成 my_core 目录
 
-![my_core](/全文检索引擎Solr搭建/3-3.png)
+![my_core](/search-engine-solr-build/3-3.png)
 
 ``` text
 ├─conf               // 存放core的配置文件
@@ -87,7 +87,7 @@ solr create -c my_core
 
 导入 oracle 表 <a href="{% asset_path news.sql %}">news</a> 中的数据
 
-![table_news](/全文检索引擎Solr搭建/4-1.png)
+![table_news](/search-engine-solr-build/4-1.png)
 
 在 %SOLRHOME%/my_core/conf 目录下创建 data-config.xml 文件，并写入以下内容
 
@@ -146,11 +146,11 @@ solr create -c my_core
 
 选择当前 my_core ,选择 Schema, 添加索引字段 **（字段名称和 solrconfig.xml 中 field 相同，忽略主键）**
 
-![Add Filed](/全文检索引擎Solr搭建/4-2.png)
+![Add Filed](/search-engine-solr-build/4-2.png)
 
 添加完成后，打开 %SOLRHOME%/my_core/conf/managed-schema，可以看到，此时添加索引字段已写入该文件中
 
-![managed-schema](/全文检索引擎Solr搭建/4-3.png)
+![managed-schema](/search-engine-solr-build/4-3.png)
 
 在命令台中输入
 ```
@@ -159,21 +159,21 @@ solr restart -p 8983
 
 重启服务
 
-![restart](/全文检索引擎Solr搭建/4-4.png)
+![restart](/search-engine-solr-build/4-4.png)
 
 进入管理界面，选择 my_core --> Dataimport --> Execute 导入数据，可以点击 Refresh Status 查看导入状态
 
-![Dataimport](/全文检索引擎Solr搭建/4-5.png)
+![Dataimport](/search-engine-solr-build/4-5.png)
 
 ## 查询数据
 
 选择 Query
 
-![Query](/全文检索引擎Solr搭建/5-1.png)
+![Query](/search-engine-solr-build/5-1.png)
 
 点击 Execute Query 查询数据
 
-![Execute Query](/全文检索引擎Solr搭建/5-2.png)
+![Execute Query](/search-engine-solr-build/5-2.png)
 
 ## 分词器
 `smartcn` 、 `IKAnalyzer` 、 `mmseg4j`，选择其中任意一种即可
@@ -249,10 +249,10 @@ smartcn 是 Solr 同步发行的一个中文分词包，将 solr-7.0.1/contrib/a
 
 分词器配置完成后，选择 Analysis，输入要分词的内容（Field Value），选择字段类型（Analyse Fieldname / FieldType [与配置信息 fieldType name 同步]），点击 Analyse Values 获取分词结果。
 
-![Analyse Values](/全文检索引擎Solr搭建/6-1.png)
+![Analyse Values](/search-engine-solr-build/6-1.png)
 
 编辑 %SOLRHOME%/my_core/conf/managed-schema，修改索引字段类型为新添加分词类型其中任意一种即可，这里我们将 text_general 修改为 text_ik，重启服务后重新导入数据
 
-![Modify Type](/全文检索引擎Solr搭建/6-2.png)
+![Modify Type](/search-engine-solr-build/6-2.png)
 
 这样我们在对该字段行进搜索时就能达到分词搜索的效果了😛

@@ -5,14 +5,14 @@
 # Site
 title: XYue's Notes
 subtitle: Keep Going
-description: 🌠瞎琢磨，乱折腾🌠
+description: 🌠 瞎琢磨，乱折腾 🌠
 author: 歆月
-language: zh-Hans
+language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://xyue.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -57,6 +57,25 @@ default_category: uncategorized
 category_map:
 tag_map:
 
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
+
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -78,7 +97,7 @@ search:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: indigo
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

@@ -5,7 +5,7 @@ tags: javascript
 categories: 技术水波文
 ---
 
-{% fi /JS中的值传递/header-img.jpg %}
+![](/value-passing-in-js/header-img.jpg)
 
 ## 值传递?
 相信在看到这个标题时，很多童鞋都会有这样的疑惑——“What?不是还有引用传递么”。
@@ -24,7 +24,7 @@ console.log(person.name);   //output: hanmeimei
 >ECMAScript中所有函数的参数都是按值传递的。
 
 啥子哎！连红宝书都这样说，那可得好好深究下。
-<!-- more -->
+
 ## 定义
 在解开疑惑前，我们先了解下什么是按值传递(call by value)，什么是按引用传递(call by reference)。
 在计算机科学里，这个部分叫求值策略(Evaluation Strategy)。它决定变量之间、函数调用时实参和形参之间值是如何传递的。

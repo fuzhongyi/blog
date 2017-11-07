@@ -1,0 +1,161 @@
+# hexo-theme-indigo
+# https://github.com/yscoder/hexo-theme-indigo
+
+# 添加新菜单项遵循以下规则
+# menu:
+#  link:               fontawesome图标，省略前缀，本主题前缀为 icon-，必须
+#    text: About       菜单显示的文字，如果省略即默认与图标一致，首字母会转大写
+#    url: /about       链接，绝对或相对路径，必须。
+#    target: _blank    是否跳出，省略则在当前页面打开
+menu:
+  home:
+    text: 主页
+    url: /
+  archives:
+    text: 归档
+    url: /archives
+  tags:
+    text: 标签
+    url: /tags
+  th-list:
+    text: 分类
+    url: /categories
+#  envelope:
+#    text: E-Mail
+#    url: mailto:fuzy450@foxmail.com
+#    target: _blank
+  qq:
+    text: QQ
+    url: http://wpa.qq.com/msgrd?v=3&uin=450805067&site=qq&menu=yes
+    target: _blank
+  link:
+    text: 知乎
+    url: http://www.zhihu.com/people/fu-zhong-yi-28
+    target: _blank
+  github:
+    url: https://github.com/fuzhongyi
+    target: _blank
+#  weibo:
+#    url: http://www.weibo.com/ysweb
+#    target: _blank
+#  link:
+#    text: 测试
+#    url: /custom
+
+# 你的头像url
+avatar: https://avatars2.githubusercontent.com/u/26210263?v=4&s=460
+# avatar link
+avatar_link: /
+# 头像背景图
+brand: /img/brand.jpg
+# favicon
+favicon: /favicon.ico
+
+# email
+email: fuzy450@foxmail.com
+
+# 设置 Android L Chrome 浏览器状态栏颜色
+color: '#3F51B5'
+
+# 页面标题
+tags_title: 标签
+archives_title: 归档
+categories_title: 分类
+
+# 文章截断
+excerpt_render: false
+excerpt_length: 200
+excerpt_link: 阅读全文...
+mathjax: false
+archive_yearly: true
+
+# 是否显示文章最后更新时间
+show_last_updated: true
+
+# 是否开启分享
+share: true
+
+# 是否开启打赏，关闭 reward: false
+reward:
+  title: 请我吃辣条😍~
+  wechat: http://chuantu.biz/t6/34/1504510809x2101812455.png     #微信，关闭设为 false
+  alipay: http://chuantu.biz/t6/34/1504511182x2101812455.png     #支付宝，关闭设为 false
+
+# 是否开启搜索
+search: true
+
+# 是否大屏幕下文章页隐藏导航
+hideMenu: true
+
+# 是否开启toc
+# toc: false
+toc:
+  list_number: true  # 是否显示数字排序
+
+# 文章页留言内容，hexo中所有变量及辅助函数等均可调用，具体请查阅 hexo.io
+postMessage: <a href="<%- url_for(page.path).replace(/index\.html$/, '') %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, '') %></a>
+
+# 站长统计，如要开启，输入CNZZ站点id，如 cnzz: 1255152447
+cnzz: 1268099462
+
+# 百度统计，如要开启，改为你的 key
+baidu_tongji: 9a62cc3b4f5c6e84c6071660c5aa8c09
+
+# 腾讯分析，如要开启，输入站点id
+tajs: false
+
+# google
+google_analytics: false
+google_site_verification: false
+
+# less
+less:
+  compress: true
+  paths:
+    - source/css/style.less
+
+# 以下评论插件开启一个即可
+# 是否开启 disqus
+disqus_shortname: false
+# 是否开启友言评论, 填写友言用户id
+uyan_uid: false
+# 是否开启来必力评论, 填写来必力用户uid
+livere_uid: MTAyMC8zMDY2MC83MjE1
+# 是否使用 gitment，https://github.com/imsun/gitment
+gitment: false
+# gitment:
+#   owner:
+#   repo:
+#   client_id:
+#   client_secret:
+
+# 规范网址
+# 让搜索引擎重定向你的不同域名、不同子域、同域不同目录的站点到你期望的路径
+# https://support.google.com/webmasters/answer/139066
+# 假设配置为 canonical: http://imys.net，那么从搜索引擎中 www.imys.net 进入会重定向到 imys.net
+canonical: http://xyue.me
+
+# 版权起始年份
+since_year: 2017
+
+# 用户页面中作者相关的描述性文字，如不需要设为 false
+about: false
+
+# “不蒜子”访问量统计，详见 http://ibruce.info/2015/04/04/busuanzi/
+visit_counter:
+  site_uv: <i class="icon icon-user"></i>
+  site_pv: <i class="icon icon-eye"></i>
+
+# 动态定义title
+title_change:
+  normal: 咦!回来啦😋!
+  leave: 	死鬼去哪里了😥!
+
+# 设置为 true 发布后将使用 unpkg cdn
+cdn: true
+
+# 设置为 true 将使用 lightbox render 图片
+lightbox: true
+
+# icp备案号  ICP_license: 京ICP备1234556号-1
+ICP_license: false

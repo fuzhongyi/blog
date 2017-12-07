@@ -76,10 +76,10 @@ show_last_updated: true
 share: true
 
 # 是否开启打赏，关闭 reward: false
-reward:
-  title: 请我吃辣条😍~
-  wechat: http://chuantu.biz/t6/34/1504510809x2101812455.png     #微信，关闭设为 false
-  alipay: http://chuantu.biz/t6/34/1504511182x2101812455.png     #支付宝，关闭设为 false
+reward: false
+#  title: 请我吃辣条😍~
+#  wechat: http://chuantu.biz/t6/34/1504510809x2101812455.png     #微信，关闭设为 false
+#  alipay: http://chuantu.biz/t6/34/1504511182x2101812455.png     #支付宝，关闭设为 false
 
 # 是否开启搜索
 search: true
@@ -133,7 +133,7 @@ gitment: false
 # 让搜索引擎重定向你的不同域名、不同子域、同域不同目录的站点到你期望的路径
 # https://support.google.com/webmasters/answer/139066
 # 假设配置为 canonical: http://imys.net，那么从搜索引擎中 www.imys.net 进入会重定向到 imys.net
-canonical: http://xyue.me
+canonical: https://xyue.me
 
 # 版权起始年份
 since_year: 2017

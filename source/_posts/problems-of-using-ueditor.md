@@ -1,8 +1,8 @@
 ---
-title: '使用UEditor(JSP 1.4.3版本)遇到的问题'
+title: 使用UEditor(JSP 1.4.3版本)遇到的问题
 date: 2017-10-12 17:02:01
 tags: [富文本编辑器,UEditor]
-categories : 技术水波文
+categories : 问题记录
 ---
 
 ![](/problems-of-using-ueditor/header-img.jpg)

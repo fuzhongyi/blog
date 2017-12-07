@@ -1,8 +1,8 @@
 ---
-title: ionic3 启动白屏解决
+title: ionic3启动白屏解决
 date: 2017-11-27 17:25:06
-tags: [ionic]
-categories: 技术水波文
+tags: ionic
+categories: 问题记录
 ---
 
 ![](/ionic-start-white-screen/header-img.png)

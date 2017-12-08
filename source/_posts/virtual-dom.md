@@ -400,7 +400,3 @@ patch(root, patches)
 ## References
 
 [https://github.com/Matt-Esch/virtual-dom/blob/master/vtree/diff.js](https://github.com/Matt-Esch/virtual-dom/blob/master/vtree/diff.js)
-
-
-
-

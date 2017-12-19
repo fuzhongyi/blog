@@ -164,9 +164,9 @@ span.dashed:after {
 ## rem 布局
 
 移动端用 rem 布局时候，根据不同的屏幕宽度要设置不同的 font-size 来做到适配。
->例如：以`750px`设计稿作为基准，根节点设置 font-size 为 100px，只考虑 DPR 为 2 的情况，最简单的情况。
+>例如：以`750px`设计稿作为基准，根节点设置 font-size 为 100px，只考虑 DPR 为 2 的最简情况。
 
- ```ecmascript 6
+ ```javascript
  document.querySelector('html').style.fontSize = `${window.innerWidth / 7.5 }px`;
  ```
 
@@ -197,3 +197,42 @@ font-size: calc(100vw  /  7.5)
 ```
 
 ![](/css-magic-skill/6-1.png)
+
+
+## 文本溢出省略
+
+有时我们会遇到这样的需求，将一段文字单行，或者多行显示，超出的部分用省略号代替。相信很多同学都曾用 javascript 截取字符串拼接省略号以达到这样的效果，但由于每个字实际表现宽度的不一致，往往需要去单独的控制截取长度。
+
+但其实，用 css 就能完美的解决。
+
+```html
+<div>借一盏午夜街头 昏黄灯光 照亮那坎坷路上人影一双 借一寸三九天里 冽冽暖阳 融这茫茫人间刺骨凉</div>
+```
+
+### 单行文本
+
+```css
+div{
+	width: 300px;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+```
+
+![](/css-magic-skill/7-1.png)
+
+### 多行文本
+
+```css
+div{
+	width: 300px;
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+}
+```
+
+![](/css-magic-skill/7-2.png)

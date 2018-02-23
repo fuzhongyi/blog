@@ -2,6 +2,7 @@
 title: Git 备忘录
 date: 2018-02-22 09:03:55
 tags: git
+categories: 备忘
 ---
 
 ![](/git-memo/header-img.jpg)

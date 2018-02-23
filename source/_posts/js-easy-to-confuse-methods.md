@@ -1,8 +1,8 @@
 ---
 title: JS 易混淆的方法整理
 date: 2018-02-23 14:12:58
-tags: javascript
-categories: [备忘,转载]
+tags: [javascript,备忘]
+categories: 转载
 ---
 
 >js的字符串方法如`substr`、`substring`，数组方法如`slice`、`splice`等名字相近，用法稍有不同，让开发者在开发过程中总是记不起其用法，需要查资料。现整理一下，希望有助大家记忆。

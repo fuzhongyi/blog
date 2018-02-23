@@ -1,5 +1,5 @@
 ---
-title: Master-Worker设计模式
+title: Master-Worker 设计模式
 date: 2017-09-30 15:02:36
 tags: [多线程,设计模式,java]
 categories: 技术水波文

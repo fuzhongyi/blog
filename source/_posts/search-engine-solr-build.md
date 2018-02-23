@@ -1,5 +1,5 @@
 ---
-title: 全文检索引擎Solr搭建
+title: 全文检索引擎 Solr 搭建
 date: 2017-10-18 09:43:31
 tags: solr
 categories : 技术水波文

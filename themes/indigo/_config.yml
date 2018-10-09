@@ -101,6 +101,9 @@ cnzz: 1268099462
 # 百度统计，如要开启，改为你的 key
 baidu_tongji: 9a62cc3b4f5c6e84c6071660c5aa8c09
 
+# 百度站点验证，如要开启，改为你的 key
+baidu_site_verification: cUW4beYroB
+
 # 腾讯分析，如要开启，输入站点id
 tajs: false
 

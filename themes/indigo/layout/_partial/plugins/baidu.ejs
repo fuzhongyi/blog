@@ -5,6 +5,12 @@
 <!-- End Baidu Tongji -->
 <% } %>
 
+<% if (theme.baidu_site_verification){ %>
+<!-- Baidu Site Verification-->
+<meta name="baidu-site-verification" content="<%- theme.baidu_site_verification %>" />
+<!-- End Baidu Site Verification-->
+<% } %>
+
 <% if(theme.baidu_push){ %>
 <!-- Baidu Push -->
 <script>

@@ -28,10 +28,10 @@ menu:
     text: QQ
     url: http://wpa.qq.com/msgrd?v=3&uin=450805067&site=qq&menu=yes
     target: _blank
-  link:
-    text: 知乎
-    url: http://www.zhihu.com/people/fu-zhong-yi-28
-    target: _blank
+# link:
+#   text: 知乎
+#   url: http://www.zhihu.com/people/fu-zhong-yi-28
+#   target: _blank
   github:
     url: https://github.com/fuzhongyi
     target: _blank

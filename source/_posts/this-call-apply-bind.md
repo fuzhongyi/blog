@@ -76,6 +76,19 @@ foo.name;  // xyue
 
 箭头函数中没有 `this` 绑定，在箭头函数中 `this` 始终指向函数所在的所用域。（***箭头函数不能作为构造函数***）
 
+```javascript
+const obj = {
+    name: 'xyue',
+    getName1() {
+        console.log(this.name);
+    },
+    getName2: () => {
+        console.log(this.name);
+    }
+}
+obj.getName1(); // xyue
+obj.getName2(); // undefined
+```
 
 ## call、apply、bind 实现
 

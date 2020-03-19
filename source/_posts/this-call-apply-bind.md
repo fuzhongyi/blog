@@ -156,7 +156,7 @@ Function.prototype.myCall = function(context) {
     }else {
         result = context.fn();
     }
-    delete context;
+    delete context.fn;
     return result;
 }
 ```
@@ -169,7 +169,7 @@ Function.prototype.myCall = function() {
     var context = context || window;
     context.fn = this;
     var result = context.fn(...args);
-    delete context;
+    delete context.fn;
     return result;
 }
 ```
@@ -185,7 +185,7 @@ Function.prototype.myApply = function() {
     var context = context || window;
     context.fn = this;
     var result = context.fn(...args);
-    delete context;
+    delete context.fn;
     return result;
 }
 ```

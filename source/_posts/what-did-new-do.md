@@ -18,8 +18,8 @@ Person.prototype.getName = function () {
 }
 var person = new Person('xyue');
 console.log(person); // Person {name: "xyue"}
-console.log(person.name); // 'xyue'
-console.log(person.getName()); // 'xyue'
+console.log(person.name); // xyue
+console.log(person.getName()); // xyue
 ```
 
 从上边例子中我们可以得到结论：
@@ -36,7 +36,7 @@ function Person(name) {
 }
 var person = new Person('xyue');
 console.log(person); // Person {name: "xyue"}
-console.log(person.name); // 'xyue'
+console.log(person.name); // xyue
 ```
 
 虽然在构造函数中返回了 `1`，但是这个返回值（原始值）并没有任何用处，得到的结果完全一样。
@@ -64,7 +64,7 @@ console.log(person.name); // undefined
 
 ## 实现
 
-通过以上几个例子，我们大致了解了 `new` 操作符的几个作用
+通过以上几个例子，我们大致了解了 `new` 操作符的几个作用。
 
 > **`new` 运算符** 创建一个用户定义的对象类型的实例或具有构造函数的内置对象的实例。`new` 关键字会进行如下的操作：
 
@@ -76,19 +76,15 @@ console.log(person.name); // undefined
 ```javascript
 function _new() {
     // 创建的新对象
-    let obj = {};
+    var obj = {};
     // 第一个参数是构造函数
-    let [constructor, ...args] = [...arguments];
-    // 执行[[原型]]连接;obj 是 constructor 的实例
+    var [constructor, ...args] = [...arguments];
+    // 将新对象的的原型指向当前构造函数的原型
     obj.__proto__ = constructor.prototype;
     // 执行构造函数，将属性或方法添加到创建的空对象上
-    let result = constructor.apply(obj, args);
-    if (result && (typeof result === 'object' || typeof result === 'function')) {
-        // 如果构造函数执行的结构返回的是一个对象，那么返回这个对象
-        return result;
-    }
-    // 如果构造函数返回的不是一个对象，返回创建的新对象
-    return obj;
+    var result = constructor.apply(obj, args);
+    // 如果没有返回其他对象，就返回 obj，否则返回其他对象
+    return typeof result === 'object' ? result : obj;
 }
 
 _new(Person,'xyue'); // Person {name: "xyue"}

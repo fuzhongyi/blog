@@ -2,6 +2,7 @@
 title: this、call、apply、bind
 date: 2020-03-18 15:16:37
 tags: javascript
+categories: 技术水波文
 ---
 
 ![](/this-call-apply-bind/header-img.png)

@@ -398,3 +398,5 @@ Promise.race = function (promises) {
   });
 }
 ```
+
+详细代码，同步 [github](https://github.com/fuzhongyi/Promise)

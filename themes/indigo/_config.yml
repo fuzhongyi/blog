@@ -96,16 +96,16 @@ toc:
 postMessage: <a href="<%- url_for(page.path).replace(/index\.html$/, '') %>" target="_blank" rel="external"><%- page.permalink.replace(/index\.html$/, '') %></a>
 
 # 站长统计，如要开启，输入CNZZ站点id，如 cnzz: 1255152447
-cnzz: 1268099462
+cnzz: false
 
 # 百度统计，如要开启，改为你的 key
-baidu_tongji: 9a62cc3b4f5c6e84c6071660c5aa8c09
+baidu_tongji: 71d34fe208bc96e33a9d60adabaf9dcb
 
 # 百度站点验证，如要开启，改为你的 key
-baidu_site_verification: cUW4beYroB
+baidu_site_verification: PAq6P6Yule
 
 # 腾讯分析，如要开启，输入站点id
-tajs: false
+tajs: 66539672
 
 # google
 google_analytics: false

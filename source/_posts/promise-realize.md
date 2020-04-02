@@ -254,3 +254,147 @@ promises-aplus-tests 中共有 872 条测试用例，以上代码，可以完美
 9. 如果 then 返回的是一个结果，那么就会把这个结果作为参数，传递给下一个 then 的成功的回调(onFulfilled)
 10. 如果 then 中抛出了异常，那么就会把这个异常作为参数，传递给下一个 then 的失败的回调(onRejected)
 11. 如果 then 返回的是一个 promise，那么会等这个 promise 执行完，promise 如果成功，就走下一个 then 的成功，如果失败，就走下一个 then 的失败
+
+## Promise 其他方法
+
+虽然我们已经实现了一个 [Promise/A+](https://promisesaplus.com/) 规范的 Promise，但是相比原生的 Promise 还缺少一些方法:
+
++ Promise.prototype.catch()
++ Promise.prototype.finally()
++ Promise.resolve()
++ Promise.reject()
++ Promise.all()
++ Promise.race()
+
+下面，我们将逐一实现：
+
+### Promise.prototype.catch
+
+用于指定出错时的回调，是特殊的 then 方法，catch 之后，可以继续 then。
+
+```javascript
+Promise.prototype.catch = function (onRejected) {
+  return this.then(null, onRejected);
+}
+```
+
+### Promise.prototype.finally
+
+不管成功还是失败，都会走到 finally 中，并且 finally 之后，还可以继续 then。并且将值原封不动的传递给后面的 then。
+
+```javascript
+Promise.prototype.finally = function (callback) {
+  return this.then((value) => {
+    return Promise.resolve(callback()).then(() => {
+      return value;
+    });
+  }, (err) => {
+    return Promise.resolve(callback()).then(() => {
+      throw err;
+    });
+  });
+}
+```
+
+### Promise.resolve
+
+Promise.resolve(value) 返回一个以给定值解析后的 promise 对象.
+
+1. 如果 value 是个 thenable 对象，返回的 promise 会跟随这个 thenable 的对象，采用它的最终状态
+2. 如果传入的 value 本身就是 promise 对象，那么 Promise.resolve 将不做任何修改、原封不动地返回这个 promise 对象
+3. 其他情况，直接返回以该值为成功状态的 promise 对象
+
+```javascript
+Promise.resolve = function (param) {
+  if (param instanceof Promise) {
+    return param;
+  }
+  return new Promise((resolve, reject) => {
+    if (param && param.then && typeof param.then === 'function') {
+      // 为保持与原生 Promise 对象执行顺序一致，模拟使用 setTimeout
+      setTimeout(() => {
+        param.then(resolve, reject);
+      });
+    } else {
+      resolve(param);
+    }
+  });
+}
+```
+
+### Promise.reject
+
+Promise.reject 方法和 Promise.resolve 不同，Promise.reject() 方法的参数会原封不动地作为 reject 的理由，变成后续方法的参数。
+
+```javascript
+Promise.reject = function (reason) {
+  return new Promise((resolve, reject) => {
+    reject(reason);
+  });
+}
+```
+
+### Promise.all
+
+Promise.all(promises) 返回一个 promise 对象。
+
+1. 如果传入的参数是一个空的可迭代对象，那么此 promise 对象回调完成 resolve，只有此情况，是同步执行的，其它都是异步返回的
+2. 如果传入的参数不包含任何 promise，则返回一个异步完成
+3. 等待 promises 中所有的 promise 执行完毕
+4. 如果参数中有一个 promise 失败，那么 Promise.all 返回的 promise 对象失败
+5. 在任何情况下，Promise.all 返回的 promise 完成状态的结果都是一个数组
+
+```javascript
+Promise.all = function (promises) {
+  return new Promise((resolve, reject) => {
+    let index = 0;
+    let result = [];
+    if (promises.length === 0) {
+      resolve(result);
+    } else {
+      function processValue(i, data) {
+        result[i] = data;
+        if (++index === promises.length) {
+          resolve(result);
+        }
+      }
+      for (let i = 0; i < promises.length; i++) {
+        //promises[i] 可能是普通值
+        Promise.resolve(promises[i]).then((data) => {
+          processValue(i, data);
+        }, (err) => {
+          reject(err);
+          return;
+        });
+      }
+    }
+  });
+}
+```
+
+### Promise.race
+
+顾名思义，Promse.race 就是赛跑的意思。意思就是说，Promise.race([p1, p2, p3]) 里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态。
+
+1. 如果传的参数数组是空，则返回的 promise 将永远等待
+2. 如果迭代包含一个或多个非承诺值和/或已解决/拒绝的承诺，则 Promise.race 将解析为迭代中找到的第一个值
+
+```javascript
+Promise.race = function (promises) {
+  return new Promise((resolve, reject) => {
+    if (promises.length === 0) {
+      return;
+    } else {
+      for (let i = 0; i < promises.length; i++) {
+        Promise.resolve(promises[i]).then((data) => {
+          resolve(data);
+          return;
+        }, (err) => {
+          reject(err);
+          return;
+        });
+      }
+    }
+  });
+}
+```

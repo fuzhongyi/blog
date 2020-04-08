@@ -54,3 +54,34 @@ console.log( Object.prototype.__proto__ === null); // true
 每个构造函数都有一个原型对象，原型对象都包含一个指向构造函数的指针，而实例都包含一个可以指向原型对象的内部指针（可以通过 `__proto__` 访问）。
 
 假如我们让原型对象等于另一个类型的实例，那么此时原型对象包含一个指向另一个原型的指针，相应地，另一个原型中也包含着一个指向另一个构造函数的指针。假如另一个原型又是另一个类型的实例，那么上述关系仍然成立，如此层层递进，就构成了实例与原型的链条，这就是原型链的基本概念。
+
+## 继承
+
+### 原型链继承
+
+原型链继承的基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。
+
+```javascript
+function Animal() {
+    this.type = "动物";
+}
+Animal.prototype.getType = function() {
+    console.log(this.type);
+}
+
+function Dog() {}
+Dog.prototype = new Animal();
+Dog.prototype.constructor = Dog;
+Dog.prototype.sound = function() {
+    console.log("汪~汪~");
+}
+
+var dog = new Dog();
+dog.sound(); // 汪~汪~
+dog.getType(); // 动物
+```
+
+缺点：
+
+1. 通过原型来实现继承时，原型会变成另一个类型的实例，原先的实例属性变成了现在的原型属性，该原型的引用类型属性会被所有的实例共享
+2. 在创建子类型的实例时，没有办法在不影响所有对象实例的情况下给超类型的构造函数中传递参数

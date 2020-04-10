@@ -85,3 +85,34 @@ dog.getType(); // 动物
 
 1. 通过原型来实现继承时，原型会变成另一个类型的实例，原先的实例属性变成了现在的原型属性，该原型的引用类型属性会被所有的实例共享
 2. 在创建子类型的实例时，没有办法在不影响所有对象实例的情况下给超类型的构造函数中传递参数
+
+### 构造函数继承
+
+基本思路：在子类型的构造函数中调用超类型构造函数。
+
+```javascript
+function SuperType(name) {
+    this.name = name;
+    this.hobbies = ['唱', '跳', 'rap'];
+}
+
+function SubType(name) {
+    SuperType.call(this, name);
+}
+
+var sub = new SubType('XYue');
+sub.hobbies.push('篮球');
+console.log(sub.hobbies); // ['唱', '跳', 'rap', '篮球'];
+
+var sup = new SuperType('SuperMan');
+console.log(sup.hobbies); // ['唱', '跳', 'rap'];
+```
+
+优点:
+
+1. 可以向超类传递参数
+2. 解决了原型中包含引用类型值被所有实例共享的问题
+
+缺点:
+
+1. 方法都在构造函数中定义，函数复用无从谈起，另外超类型原型中定义的方法对于子类型而言都是不可见的。

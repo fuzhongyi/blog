@@ -372,6 +372,37 @@ Promise.all = function (promises) {
 }
 ```
 
+### Promise.allSettled
+
+不同于 `Promise.all`，一旦有一个 `promise` 执行失败，就无法获得其他成功 `promise` 返回。`Promise.allSettled` 方法下无论某个 `promise` 成功与否，所有的 `promise` 总是被 `resolve` 的，并且值是所有 `promise` 执行结果的描述。
+
+```javascript
+Promise.allSettled = function (promises) {
+  return new Promise((resolve, reject) => {
+    let index = 0;
+    let result = [];
+    if (promises.length === 0) {
+      resolve(result);
+    } else {
+      function processValue(i, data) {
+        result[i] = data;
+        if (++index === promises.length) {
+          resolve(result);
+        }
+      }
+      for (let i = 0; i < promises.length; i++) {
+        //promises[i] 可能是普通值
+        Promise.resolve(promises[i]).then((data) => {
+          processValue(i, { status: 'fulfilled', value: data });
+        }, (err) => {
+          processValue(i, { status: 'rejected', reason: err })
+        });
+      }
+    }
+  });
+}
+```
+
 ### Promise.race
 
 顾名思义，Promse.race 就是赛跑的意思。意思就是说，Promise.race([p1, p2, p3]) 里面哪个结果获得的快，就返回那个结果，不管结果本身是成功状态还是失败状态。

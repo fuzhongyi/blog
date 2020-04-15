@@ -35,6 +35,10 @@ menu:
   github:
     url: https://github.com/fuzhongyi
     target: _blank
+  code:
+    text: LeetCode
+    url: https://leetcode.xyue.me
+    target: _blank
 #  weibo:
 #    url: http://www.weibo.com/ysweb
 #    target: _blank

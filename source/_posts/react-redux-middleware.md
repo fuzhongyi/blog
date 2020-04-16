@@ -363,8 +363,6 @@ patchStoreToAddCrashReporting(store)
 我们不在方法内替换 dispatch，而是返回一个新的 dispatch，然后让循环来进行每一步的替换：
 
 ```js
-import { reducer } from './reducer'
-
 function logger(store) {
     const next = store.dispatch
     return function(action) {
@@ -396,11 +394,12 @@ function applyMiddleware(store, middlewares) {
 applyMiddleware(store, [ logger, crashReporter ])
 ```
 
-### 存函数
+### 纯函数
 
 之前的例子已经基本实现我们的需求，但我们还可以进一步改进，上面这个函数看起来仍然不够”纯“，函数在函数体内修改了 store 自身的 dispatch ，产生了所谓的“副作用”，从函数式编程的规范出发，我们可以进行一些改造，借鉴 react-redux 的实现思路，我们可以把 applyMiddleware 作为高阶函数，用于增强 store，而不是替换 dispatch。
 
 ```js
+import { reducer } from './reducer'
 
 const logger = store => next => action => {
   let result = next(action)
